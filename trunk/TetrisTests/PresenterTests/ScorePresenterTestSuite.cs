@@ -1,8 +1,9 @@
 ﻿using Tetris.Presenters;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Tetris.Interfaces;
+using TetrisTests.Mocks;
 
-namespace TetrisTests
+namespace TetrisTests.PresenterTests
 {
     
     
@@ -11,11 +12,15 @@ namespace TetrisTests
     ///to contain all ScorePresenterTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class ScorePresenterTest
+    public class ScorePresenterTestSuite
     {
 
+        const int TestInitialDrawnCurrentScore = 10;
+        const int TestInitialDrawnTotalScore = 20;
 
         private TestContext testContextInstance;
+        private MockScoreView _view;
+        private ScorePresenter _presenter;
 
         /// <summary>
         ///Gets or sets the test context which provides
@@ -53,8 +58,8 @@ namespace TetrisTests
         [TestInitialize()]
         public void MyTestInitialize()
         {
-            IScoreView view = new MockScoreView();
-            ScorePresenter target = new ScorePresenter(view); // TODO: Initialize to an appropriate value
+            _view = new MockScoreView();
+            _presenter = new ScorePresenter(_view);
         }
         //
         //Use TestCleanup to run code after each test has run
@@ -72,8 +77,11 @@ namespace TetrisTests
         [TestMethod()]
         public void CountBrickTest()
         {
-            target.CountBrick();
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
+            Assert.AreEqual(0, _view.TestDrawnCurrentScore);
+            Assert.AreEqual(0, _view.TestDrawnTotalScore);
+            _presenter.CountBrick();
+            Assert.AreEqual(1, _view.TestDrawnCurrentScore);
+            Assert.AreEqual(0, _view.TestDrawnTotalScore);
         }
 
         /// <summary>
@@ -82,8 +90,14 @@ namespace TetrisTests
         [TestMethod()]
         public void StartTest()
         {
-            target.Start();
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
+            _view.TestDrawnCurrentScore = TestInitialDrawnCurrentScore;
+            _view.TestDrawnTotalScore = TestInitialDrawnTotalScore;
+
+            Assert.AreEqual(TestInitialDrawnCurrentScore, _view.TestDrawnCurrentScore);
+            Assert.AreEqual(TestInitialDrawnTotalScore, _view.TestDrawnTotalScore);
+            _presenter.Start();
+            Assert.AreEqual(0, _view.TestDrawnCurrentScore);
+            Assert.AreEqual(TestInitialDrawnTotalScore, _view.TestDrawnTotalScore);
         }
 
         /// <summary>
@@ -92,7 +106,7 @@ namespace TetrisTests
         [TestMethod()]
         public void ShowTotalTest()
         {
-            target.ShowTotal();
+            _presenter.ShowTotal();
             Assert.Inconclusive("A method that does not return a value cannot be verified.");
         }
 
@@ -102,8 +116,9 @@ namespace TetrisTests
         [TestMethod()]
         public void InitTest()
         {
-            target.Init();
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
+            Assert.IsFalse(_view.TestIsInitialized);
+            _presenter.Init();
+            Assert.IsTrue(_view.TestIsInitialized);
         }
     }
 }
