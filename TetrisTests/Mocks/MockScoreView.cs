@@ -1,33 +1,39 @@
-﻿using System;
-using GenericUI.Interfaces;
+﻿using GenericUI.Interfaces;
 using Tetris.Interfaces;
+using Tetris.Presenters;
 
-namespace TetrisTests
+namespace TetrisTests.Mocks
 {
     public class MockScoreView : IScoreView
     {
+        public MockScoreView()
+        {
+            Presenter = new ScorePresenter(this);
+        }
+
         public string Title { get; set; }
         
         public void Init()
         {
-            throw new NotImplementedException();
+            TestIsInitialized = true;
         }
 
-        public IPresenter Presenter
-        {
-            get { throw new NotImplementedException(); }
-        }
+        public IPresenter Presenter { get; set; }
 
         public int Height { get; set; }
 
-        public void DrawTotalScore(int total)
+        public void DrawTotalScore(int value)
         {
-            throw new NotImplementedException();
+            TestDrawnTotalScore = value;
         }
 
-        public void DrawCurrentScore(int currentScore)
+        public void DrawCurrentScore(int value)
         {
-            throw new NotImplementedException();
+            TestDrawnCurrentScore = value;
         }
+
+        public int TestDrawnTotalScore { get; set; }
+        public int TestDrawnCurrentScore { get; set; }
+        public bool TestIsInitialized { get; set; }
     }
 }

@@ -22,12 +22,12 @@ namespace Tetris.Views
             //TODO
         }
 
-        public void DrawTotalScore(int total)
+        public void DrawTotalScore(int value)
         {
             //TODO
         }
 
-        public void DrawCurrentScore(int currentScore)
+        public void DrawCurrentScore(int value)
         {
             //TODO
         }

@@ -4,7 +4,7 @@ namespace Tetris.Interfaces
 {
     public interface IScoreView: IView
     {
-        void DrawTotalScore(int total);
-        void DrawCurrentScore(int currentScore);
+        void DrawTotalScore(int value);
+        void DrawCurrentScore(int value);
     }
 }

@@ -9,7 +9,7 @@ namespace TetrisTests
     ///to contain all ScoreModelTest Unit Tests
     ///</summary>
     [TestClass()]
-    public class ScoreModelTest
+    public class ScoreModelTestSuite
     {
 
 

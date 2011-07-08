@@ -52,8 +52,8 @@
   <ItemGroup>
     <Compile Include="Mocks\MockScoreView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScoreModelTest.cs" />
-    <Compile Include="ScorePresenterTest.cs" />
+    <Compile Include="ModelTests\ScoreModelTestSuite.cs" />
+    <Compile Include="PresenterTests\ScorePresenterTestSuite.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AuthoringTests.txt" />
@@ -73,7 +73,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="PresenterTests\" />
     <Folder Include="ViewTests\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
