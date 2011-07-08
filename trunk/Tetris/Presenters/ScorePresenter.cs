@@ -17,7 +17,7 @@ namespace Tetris.Presenters
 
         public void ShowTotal()
         {
-            View.DrawTotalScore(Model.Total);
+            View.DrawTotalScore(Model.TotalScore);
         }
 
         public void CountBrick()
