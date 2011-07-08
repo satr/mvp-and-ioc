@@ -4,18 +4,18 @@ namespace Tetris.Models
 {
     public class ScoreModel
     {
-        public int Total { get; private set; }
+        public int TotalScore { get; private set; }
         public int CurrentScore { get; private set; }
 
         public void AddBrick()
         {
             CurrentScore++;
-            Total++;
+            TotalScore++;
         }
 
         public void Init()
         {
-            Total = 0;
+            TotalScore = 0;
             ResetCurrentScore();
         }
 
